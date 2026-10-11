@@ -1,0 +1,8 @@
+{
+  "name": "JRZ Score TGR",
+  "description": "Aplikasi Digital Skoring Pencak Silat Jurus & Seni (Tunggal, Ganda, Regu, Solo Kreatif) Standar Resmi IPSI 2026 & PERSILAT 100% Offline dengan Sinkronisasi Multi-Layar Dewan, Sekretaris, Juri, Timer, dan Scoreboard Monitor.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;950&family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;750&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 10s linear infinite;
+  }
+  .led-glow-blue {
+    filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.75)) drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+  }
+  .led-glow-cyan {
+    filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.75)) drop-shadow(0 0 8px rgba(34, 211, 238, 0.5));
+  }
+  .led-glow-red {
+    filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.75)) drop-shadow(0 0 8px rgba(239, 68, 68, 0.5));
+  }
+  .led-glow-gold {
+    filter: drop-shadow(0 0 20px rgba(234, 179, 8, 0.75)) drop-shadow(0 0 8px rgba(250, 204, 21, 0.5));
+  }
+  .led-glow-emerald {
+    filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.75)) drop-shadow(0 0 8px rgba(52, 211, 153, 0.5));
+  }
+  .led-glow-teal {
+    filter: drop-shadow(0 0 20px rgba(13, 148, 136, 0.75)) drop-shadow(0 0 8px rgba(20, 184, 166, 0.5));
+  }
+  
+  /* Arena LED Glass & Bezel Panels */
+  .arena-panel {
+    background: linear-gradient(135deg, rgba(10, 18, 32, 0.92) 0%, rgba(6, 11, 22, 0.95) 100%);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(30, 58, 100, 0.45);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  .arena-card {
+    background: #070e1c;
+    border: 1px solid #162540;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+  .arena-modal-card {
+    background: linear-gradient(180deg, #091326 0%, #050b16 100%);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    box-shadow: 0 0 50px rgba(2, 6, 23, 0.9), 0 0 25px rgba(14, 165, 233, 0.15);
+  }
+  .arena-led-border-blue {
+    border: 1px solid #1d4ed8;
+    box-shadow: 0 0 15px rgba(29, 78, 216, 0.25);
+  }
+  .arena-led-border-red {
+    border: 1px solid #b91c1c;
+    box-shadow: 0 0 15px rgba(185, 28, 28, 0.25);
+  }
+  .arena-led-border-gold {
+    border: 1px solid #ca8a04;
+    box-shadow: 0 0 15px rgba(202, 138, 4, 0.25);
+  }
+  .arena-grid-pattern {
+    background-image: radial-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
+
+@media print {
+  /* Set A4 Landscape as default paper and specific body margins */
+  @page {
+    size: A4 landscape;
+    margin-top: 1cm;
+    margin-bottom: 1cm;
+    margin-left: 2cm;
+    margin-right: 2cm;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* When printing the bracket chart, isolate it and scale it perfectly */
+  body:has(#print-area-bagan) {
+    overflow: visible !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body:has(#print-area-bagan) * {
+    visibility: hidden !important;
+  }
+
+  body:has(#print-area-bagan) #print-area-bagan,
+  body:has(#print-area-bagan) #print-area-bagan * {
+    visibility: visible !important;
+  }
+
+  body:has(#print-area-bagan) #print-area-bagan {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 257mm !important; /* 297mm - 2cm left - 2cm right = 257mm */
+    height: 190mm !important; /* 210mm - 1cm top - 1cm bottom = 190mm */
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 0 10mm 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+
+  /* Keep match sheet print-block visible during standard sheet printing */
+  .print\:block {
+    display: block !important;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+}

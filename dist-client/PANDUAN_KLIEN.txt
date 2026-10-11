@@ -1,0 +1,35 @@
+===================================================================
+      JRZ SCORE TGR - PAKET KLIEN RESMI (STANDAR IPSI 2026 & PERSILAT)
+===================================================================
+
+Paket ini berisi seluruh berkas antarmuka pengguna (Frontend Client)
+yang dapat dijalankan secara 100% OFFLINE tanpa sambungan internet.
+
+CARA MENJALANKAN DI KOMPUTER / LAPTOP:
+-------------------------------------------------------------------
+1. Menggunakan Node.js (Rekomendasi Utama):
+   Buka terminal / CMD di folder ini, lalu jalankan:
+     node jalankan-klien.cjs
+   Buka browser di: http://localhost:8080
+
+2. Menggunakan web server statis lainnya:
+   - npx serve .
+   - python -m http.server 8080
+   - Live Server di VS Code
+   - Web server Apache / Nginx / XAMPP (taruh di htdocs)
+
+TAUTAN LANGSUNG PERAN KLIEN:
+-------------------------------------------------------------------
+- Portal Utama:          http://localhost:8080/
+- Panel Sekretaris:      http://localhost:8080/?role=sekretaris
+- Panel Ketua Dewan:     http://localhost:8080/?role=dewan
+- Panel Operator Timer:  http://localhost:8080/?role=timer
+- Monitor Arena:         http://localhost:8080/?role=monitor
+- Juri 1 sampai 10:      http://localhost:8080/?role=juri&id=1 (ganti angka 1-10)
+
+FITUR PWA (PROGRESSIVE WEB APP):
+-------------------------------------------------------------------
+Aplikasi ini sudah mendukung PWA. Saat dibuka di Google Chrome / Edge
+di laptop maupun tablet Android / iPad, tekan tombol "Install App"
+pada bilah menu atas untuk memasang aplikasi ke layar beranda (homescreen)
+sehingga dapat dibuka langsung layaknya aplikasi native tanpa browser bar.

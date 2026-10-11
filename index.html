@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>JRZ Score TGR</title>
+    <meta name="description" content="Aplikasi Digital Skoring Pencak Silat Jurus & Seni (Tunggal, Ganda, Regu, Solo Kreatif) Standar Resmi IPSI 2026 & PERSILAT 100% Offline dengan Sinkronisasi Multi-Layar Dewan, Sekretaris, Juri, Timer, dan Scoreboard Monitor." />
+    <meta property="og:title" content="JRZ Score TGR" />
+    <meta property="og:description" content="Aplikasi Digital Skoring Pencak Silat Jurus & Seni (Tunggal, Ganda, Regu, Solo Kreatif) Standar Resmi IPSI 2026 & PERSILAT 100% Offline dengan Sinkronisasi Multi-Layar Dewan, Sekretaris, Juri, Timer, dan Scoreboard Monitor." />
+    <meta name="theme-color" content="#040813" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="JRZ Score TGR" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <script>
+      // In AI Studio preview / iFrame environments, WebSocket HMR is disabled.
+      // Intercept Vite's HMR WebSocket client to cleanly resolve and eliminate "WebSocket closed without opened" errors.
+      (function() {
+        if (typeof window === 'undefined') return;
+        var OriginalWebSocket = window.WebSocket;
+        if (!OriginalWebSocket) return;
+
+        window.WebSocket = function(url, protocols) {
+          var isHmr = false;
+          if (protocols === 'vite-hmr') isHmr = true;
+          if (Array.isArray(protocols) && protocols.indexOf('vite-hmr') !== -1) isHmr = true;
+          if (typeof url === 'string' && (url.includes('token=') || url.includes('24678') || url.includes('5173'))) isHmr = true;
+
+          if (isHmr) {
+            var target = new EventTarget();
+            var dummySocket = {
+              readyState: 1, // OPEN
+              protocol: 'vite-hmr',
+              extensions: '',
+              bufferedAmount: 0,
+              url: url,
+              binaryType: 'blob',
+              send: function() {},
+              close: function(code, reason) {
+                dummySocket.readyState = 3; // CLOSED
+                var ev = new CloseEvent('close', { wasClean: true, code: code || 1000, reason: reason || '' });
+                if (dummySocket.onclose) dummySocket.onclose(ev);
+                target.dispatchEvent(ev);
+              },
+              addEventListener: target.addEventListener.bind(target),
+              removeEventListener: target.removeEventListener.bind(target),
+              dispatchEvent: target.dispatchEvent.bind(target),
+              set onopen(fn) { target.addEventListener('open', fn); },
+              set onclose(fn) { target.addEventListener('close', fn); },
+              set onerror(fn) { target.addEventListener('error', fn); },
+              set onmessage(fn) { target.addEventListener('message', fn); },
+            };
+            setTimeout(function() {
+              var openEv = new Event('open');
+              if (dummySocket.onopen) dummySocket.onopen(openEv);
+              target.dispatchEvent(openEv);
+            }, 0);
+            return dummySocket;
+          }
+          return new OriginalWebSocket(url, protocols);
+        };
+        window.WebSocket.prototype = OriginalWebSocket.prototype;
+        window.WebSocket.CONNECTING = OriginalWebSocket.CONNECTING;
+        window.WebSocket.OPEN = OriginalWebSocket.OPEN;
+        window.WebSocket.CLOSING = OriginalWebSocket.CLOSING;
+        window.WebSocket.CLOSED = OriginalWebSocket.CLOSED;
+
+        // Suppress any stray WebSocket console errors or unhandled rejections
+        window.addEventListener('error', function(event) {
+          if (event && event.message && (
+            event.message.includes('WebSocket') || 
+            event.message.includes('websocket')
+          )) {
+            event.preventDefault();
+          }
+        });
+        window.addEventListener('unhandledrejection', function(event) {
+          var str = event && event.reason ? String(event.reason.message || event.reason) : '';
+          if (str.includes('WebSocket') || str.includes('websocket')) {
+            event.preventDefault();
+          }
+        });
+      })();
+    </script>
+
+    <!-- Firebase Realtime Database Configuration (Firebase & GitHub) -->
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBtN2Kz_jeMTRsztKMzJ-Y0furXU6KotVg",
+        authDomain: "jrzscoretgr.firebaseapp.com",
+        databaseURL: "https://jrzscoretgr-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "jrzscoretgr",
+        storageBucket: "jrzscoretgr.firebasestorage.app",
+        messagingSenderId: "361567577491",
+        appId: "1:361567577491:web:2ebc3afac97fcf599df466",
+        measurementId: "G-XKEY1RTSZQ"
+      };
+      window.firebaseConfig = firebaseConfig;
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
